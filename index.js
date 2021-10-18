@@ -1,6 +1,8 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
+const blockRoutes = require('./routes/blocks.js');
+const blockHandlers = require('./handlers/blockhandlers.js');
 
 const init = async () => {
 
@@ -13,9 +15,20 @@ const init = async () => {
         method: 'GET',
         path: '/',
         handler: (request, h) => {
-
             return 'Hello World!';
         }
+    });
+
+    server.route({
+        method: 'GET',
+        path: blockRoutes.latestBlockPath(),
+        handler: blockHandlers.latestBlockHandler
+    });
+
+    server.route({
+        method: 'GET',
+        path: blockRoutes.pendingBlocksPath(),
+        handler: blockHandlers.pendingBlocksHandler
     });
 
     await server.start();

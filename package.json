@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.2.1"
+  },
+  "devDependencies": {
+    "web3": "^1.6.0"
   }
 }
