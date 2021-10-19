@@ -90,7 +90,7 @@ describe('GET /transactions/latest', () => {
     it('should satisfy OpenAPI spec', async () => {
         const res = await axios.get(server + '/transactions/latest');
 
-        expect(res.status).toEqual(200);
+        expect(res.status === 200 || res.status === 204).toBe(true);
         //expect(res).toSatisfyApiSpec();
     });
 });

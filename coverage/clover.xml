@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1634649790384" clover="3.2.0">
-  <project timestamp="1634649790384" name="All files">
+<coverage generated="1634650512201" clover="3.2.0">
+  <project timestamp="1634650512201" name="All files">
     <metrics statements="125" coveredstatements="118" conditionals="23" coveredconditionals="18" methods="38" coveredmethods="37" elements="186" coveredelements="173" complexity="0" loc="125" ncloc="125" packages="3" files="7" classes="7"/>
     <package name="polygon-explorer-hapi">
       <metrics statements="27" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
