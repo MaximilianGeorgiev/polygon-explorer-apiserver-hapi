@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config({path: __dirname + '/.env'});
 const Hapi = require('@hapi/hapi');
 
 const blockRoutes = require('./routes/blocks.js');
