@@ -8,6 +8,9 @@ const blockHandlers = require('./handlers/blockhandlers.js');
 const transactionRoutes = require('./routes/transactions.js');
 const transactionHandlers = require('./handlers/transactionhandlers.js');
 
+const addressRoutes = require('./routes/addresses.js');
+const addressHandlers = require('./handlers/addressHandlers.js');
+
 const init = async () => {
 
     const server = Hapi.server({
@@ -71,7 +74,11 @@ const init = async () => {
         handler: transactionHandlers.transactionsByHashHandler
     });
 
-   
+    server.route({
+        method: 'GET',
+        path: addressRoutes.accountBalancePath(),
+        handler: addressHandlers.accountBalanceHandler
+    });
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
