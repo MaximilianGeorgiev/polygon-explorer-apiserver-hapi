@@ -1,8 +1,12 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
+
 const blockRoutes = require('./routes/blocks.js');
 const blockHandlers = require('./handlers/blockhandlers.js');
+
+const transactionRoutes = require('./routes/transactions.js');
+const transactionHandlers = require('./handlers/transactionhandlers.js');
 
 const init = async () => {
 
@@ -40,7 +44,31 @@ const init = async () => {
     server.route({
         method: 'GET',
         path: blockRoutes.multipleBlocksAfterThresholdPath(),
-        handler: blockHandlers.multipleBlocksAfterThresholdPath
+        handler: blockHandlers.multipleBlocksAfterThresholdHandler
+    });
+    
+    server.route({
+        method: 'GET',
+        path: transactionRoutes.latestTransactionPath(),
+        handler: transactionHandlers.latestTransactionHandler
+    });
+
+    server.route({
+        method: 'GET',
+        path: transactionRoutes.pendingTransactionsPath(),
+        handler: transactionHandlers.pendingTransactionsHandler
+    });
+
+    server.route({
+        method: 'GET',
+        path: transactionRoutes.transactionsCountByAddressPath(),
+        handler: transactionHandlers.addressTxCountHandler
+    });
+
+    server.route({
+        method: 'GET',
+        path: transactionRoutes.transactionsByHashPath(),
+        handler: transactionHandlers.transactionsByHashHandler
     });
 
    

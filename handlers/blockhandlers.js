@@ -46,7 +46,7 @@ exports.numberOrHashBlocksHandler = async (request, h) => {
     return response;
 };
 
-exports.multipleBlocksAfterThresholdPath = async (request, h) => {
+exports.multipleBlocksAfterThresholdHandler = async (request, h) => {
     let response = [];
     let latestBlock;
 
