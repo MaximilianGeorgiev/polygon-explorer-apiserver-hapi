@@ -31,6 +31,20 @@ const init = async () => {
         handler: blockHandlers.pendingBlocksHandler
     });
 
+    server.route({
+        method: 'GET',
+        path: blockRoutes.blockByHashOrNumberPath(),
+        handler: blockHandlers.numberOrHashBlocksHandler
+    });
+
+    server.route({
+        method: 'GET',
+        path: blockRoutes.multipleBlocksAfterThresholdPath(),
+        handler: blockHandlers.multipleBlocksAfterThresholdPath
+    });
+
+   
+
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };
