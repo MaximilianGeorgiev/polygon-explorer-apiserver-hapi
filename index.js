@@ -1,19 +1,18 @@
 'use strict';
 
-require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config({ path: __dirname + '/.env' });
 const Hapi = require('@hapi/hapi');
 
 const blockRoutes = require('./routes/blocks.js');
-const blockHandlers = require('./handlers/blockhandlers.js');
+const blockHandlers = require('./handlers/http/blockhandlers.js');
 
 const transactionRoutes = require('./routes/transactions.js');
-const transactionHandlers = require('./handlers/transactionhandlers.js');
+const transactionHandlers = require('./handlers/http/transactionhandlers.js');
 
 const addressRoutes = require('./routes/addresses.js');
-const addressHandlers = require('./handlers/addressHandlers.js');
+const addressHandlers = require('./handlers/http/addressHandlers.js');
 
 const init = async () => {
-
     const server = Hapi.server({
         port: 3001,
         host: 'localhost'
@@ -22,6 +21,9 @@ const init = async () => {
     server.route({
         method: 'GET',
         path: '/',
+        config: {
+            id: 'test'
+        },
         handler: (request, h) => {
             return 'Hello World!';
         }
@@ -50,7 +52,7 @@ const init = async () => {
         path: blockRoutes.multipleBlocksAfterThresholdPath(),
         handler: blockHandlers.multipleBlocksAfterThresholdHandler
     });
-    
+
     server.route({
         method: 'GET',
         path: transactionRoutes.latestTransactionPath(),
