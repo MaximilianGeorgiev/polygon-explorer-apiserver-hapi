@@ -1,7 +1,8 @@
 //const blocksController = require('../handlers/ws/blockHandlers.js');
 //const transactionsController = require('../handlers/ws/transactionHandlers.js');
 const addressesController = require('../handlers/ws/address.js');
-const blocksController = require('../handlers/ws/blocks.js')
+const blocksController = require('../handlers/ws/blocks.js');
+const transactionsController = require('../handlers/ws/transactions.js');
 
 exports.resolvePath = (connection, parsedMessage) => {
     if (parsedMessage[1] === "blocks") {
@@ -20,20 +21,20 @@ exports.resolvePath = (connection, parsedMessage) => {
                 this.returnInvalidInput(connection);
             }
         }
-    } else if (parsedMessage[0] === "transactions") {
-        if (parsedMessage[1] === "latest") {
+    } else if (parsedMessage[1] === "transactions") {
+        if (parsedMessage[2] === "latest") {
             transactionsController.returnLatestTransaction(connection);
-        } else if (parsedMessage[1] === "hash") {
-            if (parsedMessage.length === 3) {
-                transactionsController.returnTransactionByHash(connection, parsedMessage[2]);
+        } else if (parsedMessage[2] === "hash") {
+            if (parsedMessage.length === 4) {
+                transactionsController.returnTransactionByHash(connection, parsedMessage[3]);
             } else {
                 this.returnInvalidInput(connection);
             }
-        } else if (parsedMessage[1] === "pending") {
+        } else if (parsedMessage[2] === "pending") {
             transactionsController.returnPendingTransactions(connection);
-        } else if (parsedMessage[1] === "address") {
-            if (parsedMessage.length === 3) {
-                transactionsController.returnTransactionsCountByAddress(connection, parsedMessage[2]);
+        } else if (parsedMessage[2] === "address") {
+            if (parsedMessage.length === 4) {
+                transactionsController.returnTransactionsCountByAddress(connection, parsedMessage[3]);
             } else {
                 this.returnInvalidInput(connection);
             }
