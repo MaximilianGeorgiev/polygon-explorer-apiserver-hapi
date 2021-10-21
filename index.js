@@ -4,13 +4,13 @@ require('dotenv').config({ path: __dirname + '/.env' });
 const Hapi = require('@hapi/hapi');
 
 const blockRoutes = require('./routes/blocks.js');
-const blockHandlers = require('./handlers/http/blockhandlers.js');
+const blockHandlers = require('./controllers/http/blocks.js');
 
 const transactionRoutes = require('./routes/transactions.js');
-const transactionHandlers = require('./handlers/http/transactionhandlers.js');
+const transactionHandlers = require('./controllers/http/transactions.js');
 
 const addressRoutes = require('./routes/addresses.js');
-const addressHandlers = require('./handlers/http/addressHandlers.js');
+const addressHandlers = require('./controllers/http/addresses.js');
 
 const init = async () => {
     const server = Hapi.server({

@@ -1,8 +1,8 @@
 //const blocksController = require('../handlers/ws/blockHandlers.js');
 //const transactionsController = require('../handlers/ws/transactionHandlers.js');
-const addressesController = require('../handlers/ws/address.js');
-const blocksController = require('../handlers/ws/blocks.js');
-const transactionsController = require('../handlers/ws/transactions.js');
+const addressesController = require('../controllers/ws/addresses.js');
+const blocksController = require('../controllers/ws/blocks.js');
+const transactionsController = require('../controllers/ws/transactions.js');
 
 exports.resolvePath = (connection, parsedMessage) => {
     if (parsedMessage[1] === "blocks") {
